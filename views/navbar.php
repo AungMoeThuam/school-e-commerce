@@ -10,8 +10,8 @@
 
 <nav id="navbar" class="navbar navbar-expand-lg navbar-dark  ">
     <div class="container-fluid">
-        <a href="#" class=" navbar-brand">
-            <img width="250" alt="logo" class=" img-fluid">
+        <a href="http://localhost/e-commerce" class=" navbar-brand">
+            <img src="http://localhost/e-commerce/assets/logo.svg" width="250" alt="logo" class=" img-fluid">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -21,7 +21,7 @@
             <div style="width: 100%;" class="d-flex flex-column flex-lg-row  align-items-sm-start  justify-content-between align-items-lg-center  ">
                 <ul class="navbar-nav  me-lg-5">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Shop</a>
+                        <a class="nav-link active" href="./views/shop.php">Shop</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="#">Help</a>
@@ -60,5 +60,4 @@
 
 <script>
     let img = document.querySelector('img');
-    img.src = `${location.pathname}assets/logo.svg`;
 </script>
