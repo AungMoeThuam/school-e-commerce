@@ -8,7 +8,7 @@
     }
 </style>
 
-<nav id="navbar" class="navbar navbar-expand-lg navbar-dark  ">
+<nav id="navbar" class="navbar navbar-expand-lg navbar-dark sticky-top ">
     <div class="container-fluid">
         <a href="http://localhost/e-commerce" class=" navbar-brand">
             <img src="http://localhost/e-commerce/assets/logo.svg" width="250" alt="logo" class=" img-fluid">
@@ -21,7 +21,7 @@
             <div style="width: 100%;" class="d-flex flex-column flex-lg-row  align-items-sm-start  justify-content-between align-items-lg-center  ">
                 <ul class="navbar-nav  me-lg-5">
                     <li class="nav-item">
-                        <a class="nav-link active" href="./views/shop.php">Shop</a>
+                        <a class="nav-link active" href="http://localhost/e-commerce/views/shop.php">Shop</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="#">Help</a>
