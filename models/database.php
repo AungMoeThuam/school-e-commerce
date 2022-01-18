@@ -1,7 +1,7 @@
 <?php
 // include "../../models/autoload.php";
 
-namespace models\database;
+namespace models;
 
 use PDOException;
 use PDO;

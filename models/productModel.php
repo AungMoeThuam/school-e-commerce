@@ -1,8 +1,9 @@
 <?php
 
-namespace models\product;
+namespace models;
 
-use models\database\Database;
+use models\Database;
+
 use PDOException;
 
 class ProductModel

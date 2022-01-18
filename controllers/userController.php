@@ -1,5 +1,9 @@
 <?php
-include "../../models/database/database.php";
+
+namespace controllers;
+
+use models\Database;
+
 
 class UserController
 {
@@ -26,11 +30,11 @@ class UserController
         $sql = "SELECT * FROM users WHERE id = ?";
         $statement = $this->database->prepare($sql);
         $statement->execute([$id]);
-        return $statement->fetchAll();
+        return $statement->fetch();
     }
 }
 
 
-echo "<pre>";
-$user = new UserController();
-var_dump($user->getUsersById(3));
+// echo "<pre>";
+// $user = new UserController();
+// var_dump($user->getUsersById(3));

@@ -4,7 +4,7 @@
 
 namespace controllers;
 
-use models\product\ProductModel;
+use models\ProductModel;
 
 class ProductController
 {
@@ -23,5 +23,9 @@ class ProductController
     public function getProductById($id)
     {
         return $this->productModel->getProductsById($id);
+    }
+    public function getProductByCategoryId($id)
+    {
+        return $this->productModel->getProductsByCategory($id);
     }
 }

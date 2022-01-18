@@ -1,9 +1,17 @@
 <?php
-include ".././models/autoload.php";
+session_start();
+include "/xampp/htdocs/e-commerce/autoload/autoload.php";
+
 
 use controllers\productController;
 
 $productController = new ProductController();
+$products = [];
+if (!isset($_GET["category_id"])) {
+    $products = $productController->showProducts();
+} else {
+    $products = $productController->getProductByCategoryId($_GET["category_id"]);
+}
 
 ?>
 
@@ -51,31 +59,32 @@ $productController = new ProductController();
             <div style="height:max-content;" class=" col-lg-2 border border-1  p-0">
                 <h5 class=" border border-1 ps-2  pt-2 pb-2 ">Filter</h5>
                 <div class=" border-bottom p-2">
+                    <a class="btn btn-dark d-block mb-2" href="<?php echo $_SERVER["PHP_SELF"] ?>">Reset</a>
                     <h5 class="">Categories</h5>
                     <div class="d-flex flex-column  ">
                         <div class=" mb-1">
-                            <input class=" form-check-input m-1" type="checkbox" name="" id="category">Electronic
+                            <input id="filter" chec value="1" class=" form-check-input m-1" type="checkbox" name="" id="category">Monitor
                         </div>
                         <div class=" mb-1">
-                            <input class=" form-check-input m-1" type="checkbox" name="" id="category">Sport
+                            <input id="filter" value="2" class=" form-check-input m-1" type="checkbox" name="" id="category">Laptop
                         </div>
                         <div class=" mb-1">
-                            <input class=" form-check-input m-1" type="checkbox" name="" id="category">Fashion
+                            <input id="filter" value="3" class=" form-check-input m-1" type="checkbox" name="" id="category">Fashion
                         </div>
                         <div class=" mb-1">
-                            <input class=" form-check-input m-1" type="checkbox" name="" id="category">Cosmetics
+                            <input id="filter" value="4" class=" form-check-input m-1" type="checkbox" name="" id="category">Cosmetics
                         </div>
                         <div class=" mb-1">
-                            <input class=" form-check-input m-1" type="checkbox" name="" id="category">Kitchen
+                            <input id="filter" value="5" class=" form-check-input m-1" type="checkbox" name="" id="category">Kitchen
                         </div>
                         <div class=" mb-1">
-                            <input class=" form-check-input m-1" type="checkbox" name="" id="category">Stationery
+                            <input id="filter" value="6" class=" form-check-input m-1" type="checkbox" name="" id="category">Stationery
                         </div>
                         <div class=" mb-1">
-                            <input class=" form-check-input m-1" type="checkbox" name="" id="category">Furniture
+                            <input id="filter" value="7" class=" form-check-input m-1" type="checkbox" name="" id="category">Furniture
                         </div>
                         <div>
-                            <input class=" form-check-input m-1" type="checkbox" name="" id="category">Health
+                            <input id="filter" value="8" class=" form-check-input m-1" type="checkbox" name="" id="category">Health
                         </div>
                     </div>
                 </div>
@@ -93,67 +102,22 @@ $productController = new ProductController();
             <div class="col-lg-9     pt-2  ">
                 <h5>Products</h5>
                 <div class="d-flex gap-2 flex-wrap justify-content-lg-start  ">
-                    <?php foreach ($productController->showProducts() as $product) { ?>
+
+
+
+                    <?php foreach ($products as $product) { ?>
                         <div id="product" style="width: 230px;height:340px" class=" card  shadow-sm">
-                            <h1 class=" d-none"><?php echo $product["id"] ?></h1>
-                            <div class=" p-3" style="height: 55%;"><img src="../assets/monitor.webp" class=" img-fluid" alt=""></div>
+
+                            <div id="#productImg" class=" border-1 border-bottom p-3 d-flex align-items-center justify-content-center" style="height: 55%;"><img src="../assets/<?php echo $product["photo"] ?>" class=" img-fluid" alt=""></div>
                             <div style="height: 45%;" class="px-3">
                                 <h5 style="height: 35%;" class="mb-1 fw-bold"><?php echo $product["name"]  ?></h5>
 
                                 <h6 class=" fw-bold ">Ks <?php echo $product["price"] ?></h6>
                                 <div class="d-flex align-items-center justify-content-between">
                                     <span><i class="fas fa-star"></i> 4</span>
-                                    <button class="btn btn-warning fs-4 px-4"><i class="fas fa-cart-plus"></i></button>
-                                </div>
 
-                            </div>
-                        </div>
-                    <?php } ?>
-                    <?php foreach ($productController->showProducts() as $product) { ?>
-                        <div id="product" style="width: 230px;height:340px" class=" card  shadow-sm">
-                            <h1 class=" d-none"><?php echo $product["id"] ?></h1>
-                            <div class=" p-3" style="height: 55%;"><img src="../assets/monitor.webp" class=" img-fluid" alt=""></div>
-                            <div style="height: 45%;" class="px-3">
-                                <h5 style="height: 35%;" class="mb-1 fw-bold"><?php echo $product["name"]  ?></h5>
-
-                                <h6 class=" fw-bold ">Ks <?php echo $product["price"] ?></h6>
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <span><i class="fas fa-star"></i> 4</span>
-                                    <button class="btn btn-warning fs-4 px-4"><i class="fas fa-cart-plus"></i></button>
-                                </div>
-
-                            </div>
-                        </div>
-                    <?php } ?>
-
-                    <?php foreach ($productController->showProducts() as $product) { ?>
-                        <div id="product" style="width: 230px;height:340px" class=" card  shadow-sm">
-                            <h1 class=" d-none"><?php echo $product["id"] ?></h1>
-                            <div class=" p-3" style="height: 55%;"><img src="../assets/monitor.webp" class=" img-fluid" alt=""></div>
-                            <div style="height: 45%;" class="px-3">
-                                <h5 style="height: 35%;" class="mb-1 fw-bold"><?php echo $product["name"]  ?></h5>
-
-                                <h6 class=" fw-bold ">Ks <?php echo $product["price"] ?></h6>
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <span><i class="fas fa-star"></i> 4</span>
-                                    <button class="btn btn-warning fs-4 px-4"><i class="fas fa-cart-plus"></i></button>
-                                </div>
-
-                            </div>
-                        </div>
-                    <?php } ?>
-
-                    <?php foreach ($productController->showProducts() as $product) { ?>
-                        <div id="product" style="width: 230px;height:340px" class=" card  shadow-sm">
-                            <h1 class=" d-none"><?php echo $product["id"] ?></h1>
-                            <div class=" p-3 d-flex align-items-center justify-content-center" style="height: 55%;"><img src="../assets/<?php echo $product["photo"] ?>" class=" img-fluid" alt=""></div>
-                            <div style="height: 45%;" class="px-3">
-                                <h5 style="height: 35%;" class="mb-1 fw-bold"><?php echo $product["name"]  ?></h5>
-
-                                <h6 class=" fw-bold ">Ks <?php echo $product["price"] ?></h6>
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <span><i class="fas fa-star"></i> 4</span>
-                                    <button class="btn btn-warning fs-4 px-4"><i class="fas fa-cart-plus"></i></button>
+                                    <a href="http://localhost/e-commerce/views/productDetail.php?id=<?php echo $product["id"] ?>" id="addtocart" class="btn btn-warning">View Detail</a>
+                                    <!-- <button id="#addtocart" class="btn btn-warning fs-4 px-4"><i class="fas fa-cart-plus"></i></button> -->
                                 </div>
 
                             </div>
@@ -168,14 +132,46 @@ $productController = new ProductController();
 
         </div>
     </div>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
 
     <script>
-        let cat = document.querySelectorAll("#product");
-        cat.forEach(e => e.addEventListener("click", () => {
-            let productId = e.children[0].textContent;
-            location.href = `http://localhost/e-commerce/views/productDetail.php?id=${productId}`;
-        }))
-        console.log(cat);
+        let filter = document.querySelectorAll("#filter");
+        console.log(filter);
+
+        // localStorage.setItem("filterCheckedList", "[]");
+        let checkedList = JSON.parse(localStorage.getItem("filterCheckedList"));
+
+
+        for (i = 0; i < checkedList.length; i++) {
+            if (checkedList[i].checked === true) {
+                filter[i].checked = true;
+            }
+        }
+
+        filter.forEach(e => e.addEventListener("change", () => {
+
+            addToCheckedList({
+                id: e.value,
+                checked: e.checked
+            });
+
+            location.href = "http://localhost/e-commerce/views/shop.php?category_id=1";
+
+        }));
+
+        function addToCheckedList(element) {
+            let newArray = [...checkedList];
+
+            let elementExist = newArray.findIndex(obj => obj.id === element.id);
+
+            if (elementExist === -1) {
+                newArray = [...newArray, element];
+            } else {
+                newArray[elementExist] = element;
+            }
+            localStorage.setItem("filterCheckedList", JSON.stringify(newArray));
+        }
     </script>
 
 

@@ -1,3 +1,11 @@
+<?php
+function echoFirstWordOfString($word)
+{
+    $newWord = explode(" ", $word);
+    echo $newWord[0];
+}
+?>
+
 <style>
     #navbar {
         background-color: #000000;
@@ -36,10 +44,19 @@
                 <ul class="navbar-nav pe-lg-3 ms-lg-5 align-items-lg-center">
 
                     <li class="nav-item">
-                        <a href="#" class="nav-link" style="font-size: 25px;color:aliceblue;"><i class="fas fa-user"></i></a>
+                        <a href="http://localhost/e-commerce/views/profile.php" class="nav-link  " style="font-size: 25px;color:aliceblue;">
+
+                            <?php if (isset($_SESSION["auth"]["login_status"])) { ?>
+                                <h6 class=" text-center fs-6"> <?php echoFirstWordOfString($_SESSION["auth"]["user"]["name"]); ?> </h6>
+                            <?php } else { ?>
+                                <i class="fas fa-user"></i>
+                            <?php } ?>
+
+
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link" style="font-size: 25px;color:aliceblue;"><i class="fas fa-shopping-cart"></i>
+                        <a href="http://localhost/e-commerce/views/cart.php" class="nav-link" style="font-size: 25px;color:aliceblue;"><i class="fas fa-shopping-cart"></i>
                         </a>
                     </li>
                 </ul>
@@ -57,7 +74,3 @@
 
     </div>
 </nav>
-
-<script>
-    let img = document.querySelector('img');
-</script>
