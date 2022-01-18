@@ -6,7 +6,6 @@ use controllers\ProductController;
 
 $productController = new ProductController();
 $product = $productController->getProductById($_GET["id"]);
-
 $qty = $_SESSION["temp_qty"];
 
 ?>
@@ -33,7 +32,7 @@ $qty = $_SESSION["temp_qty"];
             <h5 id="productId" class="d-none"><?php echo $_GET["id"]; ?></h5>
             <div class="col-6 border-end d-flex py-3 justify-content-center align-items-center">
 
-                <img id="productImg" class=" img-fluid" src="../assets/<?php echo $product["photo"] ?>" alt="">
+                <img id="productImg" class=" img-fluid" src="../assets/products_img/<?php echo $product["photo"] ?>" alt="">
             </div>
             <div class="col-4 py-3 px-4">
                 <div class="mb-2">
@@ -43,13 +42,16 @@ $qty = $_SESSION["temp_qty"];
                 <div>
                     <p><?php echo $product["description"] ?></p>
                 </div>
+                <div>
+                    <h6 id="price" class=" d-inline"><?php echo $product["price"] ?></h6> KS
+                </div>
                 <div class="row p-1 align-items-center justify-content-start">
                     <p class="col-4 ">Quantity</p>
-                    <button class="col-2 btn btn-warning">
+                    <button id="increBtn" class="col-2 btn btn-warning">
                         <i class="fas fa-plus"></i>
                     </button>
                     <h5 id="productQty" class="col-1 align-items-center mx-2 ">1</h5>
-                    <button class="col-2 btn btn-warning">
+                    <button id="decreBtn" class="col-2 btn btn-warning">
                         <i class="fas fa-minus"></i>
                     </button>
                 </div>
@@ -69,26 +71,35 @@ $qty = $_SESSION["temp_qty"];
         let name = document.querySelector("#productName");
         let img = document.querySelector("#productImg");
         let qty = document.querySelector("#productQty");
-
+        let price = document.querySelector("#price");
+        let increBtn = document.querySelector("#increBtn");
+        let decreBtn = document.querySelector("#decreBtn");
 
         addToCart.addEventListener("click", async () => {
-            // console.log(id.innerText, name.innerText, img.src, qty.innerText);
+
             let req = await fetch("http://localhost/e-commerce/actions/addToCartAction.php", {
                 method: "POST",
                 body: JSON.stringify({
                     id: id.innerText,
                     name: name.innerText,
                     img: img.src,
-                    qty: qty.innerText
+                    qty: qty.innerText,
+                    price: price.innerText
                 }),
                 headers: {
                     'Content-Type': 'application/json'
                 }
             });
+            history.back();
 
-            let res = await JSON.parse(req.json());
-            console.log(res);
-            // location.href = "http://localhost/e-commerce/actions/addToCartAction.php";
+        });
+        increBtn.addEventListener("click", () => {
+            ++qty.innerText;
+        })
+        decreBtn.addEventListener("click", () => {
+            if (qty.innerText > 0) {
+                --qty.innerText;
+            }
         })
     </script>
 </body>

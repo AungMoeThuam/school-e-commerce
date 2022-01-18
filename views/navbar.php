@@ -35,7 +35,7 @@ function echoFirstWordOfString($word)
                         <a class="nav-link active" href="#">Help</a>
                     </li>
                 </ul>
-                <form style="height:40px;" class="form-control d-none d-lg-flex align-items-center me-lg-5 ms-lg-5  p-0">
+                <form action="http://localhost/e-commerce/views/search.php" method="POST" style="height:40px;" class="form-control d-none d-lg-flex align-items-center me-lg-5 ms-lg-5  p-0">
 
                     <input class="border-0 flex-grow-1 ps-2" placeholder="search products..." type="text" name="search" id="search">
                     <button class="btn"><i class=" fas fa-search"></i></button>

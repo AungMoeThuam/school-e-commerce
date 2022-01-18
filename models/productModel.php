@@ -59,4 +59,12 @@ class ProductModel
         $statement->execute([$id]);
         return $statement->fetch();
     }
+
+    public function searchByName($name)
+    {
+        $sql = "SELECT * FROM products WHERE name LIKE '$name%'";
+        $statement = $this->database->prepare($sql);
+        $statement->execute();
+        return $statement->fetchAll();
+    }
 }

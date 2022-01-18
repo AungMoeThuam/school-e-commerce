@@ -19,7 +19,7 @@ session_start();
         }
 
         #img-1 {
-            background-image: url("./assets/b2.jpg");
+            background-image: url("./assets/showcases/b2.jpg");
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
@@ -29,7 +29,7 @@ session_start();
         }
 
         #img-2 {
-            background-image: url("./assets/aa.jpg");
+            background-image: url("./assets/showcases/aa.jpg");
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
@@ -39,7 +39,7 @@ session_start();
         }
 
         #img-3 {
-            background-image: url("./assets/c.jpg");
+            background-image: url("./assets/showcases/c.jpg");
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center;

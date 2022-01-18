@@ -1,5 +1,12 @@
 <?php
 session_start();
+include "../autoload/autoload.php";
+
+use models\CartModel;
+
+$cart = $_SESSION["cart"];
+$cartModel = CartModel::getCartInstance();
+$totalCostOfItem = $cartModel->getTotalCost();
 ?>
 
 <!DOCTYPE html>
@@ -23,28 +30,38 @@ session_start();
 
         <div class="row mt-2 offset-1">
             <div class="col-7">
-                <div class=" row align-items-center border shadow-sm p-2">
-                    <div class="col-3"> <img src="../assets/apple.webp" class=" img-fluid" alt=""></div>
-                    <div class="col-3">
-                        <h6>Macbook 14.5 inches !</h6>
-                    </div>
-                    <div class="col-3">
-                        <h5>1200000000 KS</h5>
-                    </div>
-                    <div class="col-2 d-flex align-items-center">
-                        <button class="btn btn-warning">+</button>
-                        <h5 id="qty" class="mx-1">200</h5>
-                        <button class="btn btn-danger">-</button>
+                <?php foreach ($cart as $item) { ?>
+                    <div class=" mt-1 row align-items-center border shadow-sm p-2">
+                        <div class="col-3"> <img src="<?php echo $item['img']; ?>" class=" img-thumbnail border-0" alt=""></div>
+                        <div class="col-3">
+                            <h6><?php echo $item['name'] ?></h6>
+                        </div>
+                        <div class="col-3">
 
+                            <h6 class="d-inline"><?php echo $item['price'] ?></h6>
+                            KS
+
+                        </div>
+                        <div class="col-2 d-flex align-items-center justify-content-between">
+                            <a id="increBtn" class="btn btn-warning">+</a>
+
+                            <h5 id="qty" class="mx-1"><?php echo $item['qty'] ?></h5>
+                            <a id="decreBtn" class="btn btn-danger">-</a>
+
+                        </div>
+                        <div class="col-1">
+                            <span> <i class="fas fa-trash-alt"></i></span>
+                        </div>
                     </div>
-                </div>
+                <?php } ?>
+
             </div>
-            <div class="col-4 p-2 shadow-sm ms-2 border">
+            <div style="height: 250px;" class="col-4 p-2 shadow-sm ms-2 border">
                 <h5>Order Summary</h5>
                 <table class="table ">
                     <tr>
                         <td>Product Cost</td>
-                        <td>23000000 Ks</td>
+                        <td><?php echo $totalCostOfItem; ?> Ks</td>
                     </tr>
                     <tr>
                         <td>Shopping Fee</td>
@@ -52,15 +69,22 @@ session_start();
                     </tr>
                     <tr>
                         <td>Total</td>
-                        <td>23001000 Ks</td>
+                        <td><?php echo $totalCostOfItem + 1000; ?> Ks</td>
                     </tr>
                 </table>
+                <a href="http://localhost/e-commerce/actions/clearCartAction.php" class="btn btn-danger">Clear cart</a>
                 <a href="#" class="btn btn-dark">Check Out</a>
+
             </div>
 
         </div>
 
         <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script>
+            let qty = document.querySelectorAll("#qty");
+            let increBtn = document.querySelectorAll("#increBtn");
+            let decreBtn = document.querySelectorAll("#decreBtn");
+        </script>
 </body>
 
 </html>
