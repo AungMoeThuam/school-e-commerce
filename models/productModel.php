@@ -15,22 +15,11 @@ class ProductModel
         $this->database = Database::getDatabaseInstance();
     }
 
-    public function insertProduct($product)
+    public function addProduct($array)
     {
-        try {
-            $sql = "INSERT INTO products (name,description,photo,price,qty,category_id) VALUES (:name,:description,:photo,:price,:qty,:category_id)";
-            $statement = $this->database->prepare($sql);
-            $statement->bindParam(':name', $product["name"]);
-            $statement->bindParam(':description', $product["description"]);
-            $statement->bindParam(':photo', $product["photo"]);
-            $statement->bindParam(':price', $product["price"]);
-            $statement->bindParam(':qty', $product["qty"]);
-            $statement->bindParam(':category_id', $product["category_id"]);
-            $statement->execute();
-            echo "Inserted to database successfully!";
-        } catch (PDOException $e) {
-            echo $e->getMessage();
-        }
+        $sql = "INSERT INTO products (name,description,price,qty,photo,brand,category_id) VALUES (?,?,?,?,?,?,?)";
+        $statement = $this->database->prepare($sql);
+        $statement->execute($array);
     }
 
     //get all the products from the products table 
@@ -60,11 +49,26 @@ class ProductModel
         return $statement->fetch();
     }
 
+    //searching product by name
     public function searchByName($name)
     {
-        $sql = "SELECT * FROM products WHERE name LIKE '$name%'";
+        $sql = "SELECT * FROM products WHERE name LIKE '%$name%'";
         $statement = $this->database->prepare($sql);
         $statement->execute();
         return $statement->fetchAll();
+    }
+
+    public function updateProduct($array, $photo = false)
+    {
+        $sql = $photo === false ? "UPDATE products SET name=?,description=?,price=?,qty=?,brand=?,category_id=? WHERE id = ?" : "UPDATE products SET name=?,description=?,price=?,qty=?,photo=?,brand=?,category_id=? WHERE id = ?";
+        $statement = $this->database->prepare($sql);
+        $statement->execute($array);
+    }
+
+    public function deleteProduct($id)
+    {
+        $sql = "DELETE FROM products WHERE id =?";
+        $statement = $this->database->prepare($sql);
+        $statement->execute([$id]);
     }
 }

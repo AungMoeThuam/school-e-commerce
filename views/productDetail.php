@@ -6,7 +6,7 @@ use controllers\ProductController;
 
 $productController = new ProductController();
 $product = $productController->getProductById($_GET["id"]);
-$qty = $_SESSION["temp_qty"];
+
 
 ?>
 
@@ -37,10 +37,14 @@ $qty = $_SESSION["temp_qty"];
             <div class="col-4 py-3 px-4">
                 <div class="mb-2">
                     <h3 id="productName"><?php echo $product["name"] ?></h3>
-                    <span><i class="fas fa-star"></i> 4</span>
+                    <span><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i style="color: gainsboro;" class="fas fa-star "></i></span>
                 </div>
                 <div>
-                    <p><?php echo $product["description"] ?></p>
+                    <p class=" "><?php echo $product["description"] ?></p>
                 </div>
                 <div>
                     <h6 id="price" class=" d-inline"><?php echo $product["price"] ?></h6> KS
@@ -97,7 +101,7 @@ $qty = $_SESSION["temp_qty"];
             ++qty.innerText;
         })
         decreBtn.addEventListener("click", () => {
-            if (qty.innerText > 0) {
+            if (qty.innerText > 1) {
                 --qty.innerText;
             }
         })

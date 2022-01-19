@@ -28,11 +28,17 @@ class CartModel
             array_push($_SESSION["cart"], $product);
         } elseif (in_array($product["id"], array_column($_SESSION["cart"], "id"))) {
             $index =  array_search($product["id"], array_column($_SESSION["cart"], "id"));;
-            $_SESSION["a"] = array_search($product["id"], array_column($_SESSION["cart"], "id"));
+            // $_SESSION["a"] = array_search($product["id"], array_column($_SESSION["cart"], "id"));
             $_SESSION["cart"][$index]["qty"] += $product["qty"];
         } else {
             array_push($_SESSION["cart"], $product);
         }
+    }
+
+    public function deleteFromCart($id)
+    {
+        $index =  array_search($id, array_column($_SESSION["cart"], "id"));;
+        array_splice($_SESSION["cart"], $index, 1);
     }
 
     public function getTotalCost()

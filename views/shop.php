@@ -108,16 +108,20 @@ if (!isset($_GET["category_id"])) {
                     <?php foreach ($products as $product) { ?>
                         <a href="http://localhost/e-commerce/views/productDetail.php?id=<?php echo $product["id"] ?>" id="product" style="width: 230px;height:340px" class=" card text-dark nav-link  shadow-sm">
 
-                            <div id="#productImg" class=" border-1 border-bottom p-3 d-flex align-items-center justify-content-center" style="height: 55%;"><img src="../assets/products_img/<?php echo $product["photo"] ?>" class=" img-fluid" alt=""></div>
-                            <div style="height: 45%;" class="px-3">
-                                <h5 style="height: 35%;" class="mb-1 fw-bold"><?php echo $product["name"]  ?></h5>
+                            <div id="#productImg" class=" p-3 d-flex align-items-center justify-content-center" style="height: 60%;"><img src="../assets/products_img/<?php echo $product["photo"] ?>" class=" img-fluid" alt=""></div>
+                            <div style="height: 40%;" class="px-3">
+                                <h5 style="height: 35%;" class="mb-1 overflow-hidden fw-bold"><?php echo $product["name"]  ?>...</h5>
 
-                                <h6 class=" fw-bold ">Ks <?php echo $product["price"] ?></h6>
+                                <h6 class=" fw-bold "><?php echo $product["price"] ?> MMK</h6>
                                 <div class="d-flex align-items-center justify-content-between">
-                                    <span><i class="fas fa-star"></i> 4</span>
-
+                                    <span><i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i style="color: gainsboro;" class="fas fa-star "></i></span>
                                     <!-- <a href="http://localhost/e-commerce/views/productDetail.php?id=<?php echo $product["id"] ?>" id="addtocart" class="btn btn-warning">View Detail</a> -->
-                                    <!-- <button id="#addtocart" class="btn btn-warning fs-4 px-4"><i class="fas fa-cart-plus"></i></button> -->
+                                    <!-- <a href="http://localhost/e-commerce/views/productDetail.php?id=<?php echo $product["id"] ?>" id="addtocart" class="btn btn-warning">View Detail</a> -->
+
                                 </div>
 
                             </div>

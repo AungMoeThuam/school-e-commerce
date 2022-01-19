@@ -32,6 +32,25 @@ class UserController
         $statement->execute([$id]);
         return $statement->fetch();
     }
+
+    public function updateUser($array)
+    {
+        $sql = "UPDATE users SET name=?,email=?,phone=?,password=?,address=? WHERE id = ?";
+        $statement = $this->database->prepare($sql);
+        $statement->execute($array);
+    }
+    public function addUser($array)
+    {
+        $sql = "INSERT INTO users (name,email,phone,password,address) VALUES (?,?,?,?,?)";
+        $statement = $this->database->prepare($sql);
+        $statement->execute($array);
+    }
+    public function deleteUser($id)
+    {
+        $sql = "DELETE FROM users WHERE id = ?";
+        $statement = $this->database->prepare($sql);
+        $statement->execute([$id]);
+    }
 }
 
 

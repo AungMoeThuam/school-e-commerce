@@ -29,31 +29,36 @@ $totalCostOfItem = $cartModel->getTotalCost();
     <div class="container">
 
         <div class="row mt-2 offset-1">
-            <div class="col-7">
-                <?php foreach ($cart as $item) { ?>
-                    <div class=" mt-1 row align-items-center border shadow-sm p-2">
-                        <div class="col-3"> <img src="<?php echo $item['img']; ?>" class=" img-thumbnail border-0" alt=""></div>
-                        <div class="col-3">
-                            <h6><?php echo $item['name'] ?></h6>
-                        </div>
-                        <div class="col-3">
+            <div class="col-7   ">
+                <?php if (count($cart) === 0) { ?>
+                    <h6 class="p-2 mt-5">There is no item in the cart yet!</h6>
+                <?php } else { ?>
 
-                            <h6 class="d-inline"><?php echo $item['price'] ?></h6>
-                            KS
+                    <?php foreach ($cart as $item) { ?>
+                        <div class=" mt-1 row align-items-center border shadow-sm p-2">
+                            <div class="col-3"> <img width="120" height="100" src="<?php echo $item['img']; ?>" class="  border-0" alt=""></div>
+                            <div class="col-3">
+                                <h6><?php echo $item['name'] ?></h6>
+                            </div>
+                            <div class="col-3">
 
-                        </div>
-                        <div class="col-2 d-flex align-items-center justify-content-between">
-                            <a id="increBtn" class="btn btn-warning">+</a>
+                                <h6 class="d-inline"><?php echo $item['price'] ?></h6>
+                                MMK
+                            </div>
+                            <div class="col-2 d-flex align-items-center justify-content-between">
+                                <a id="increBtn" class="btn btn-warning">+</a>
 
-                            <h5 id="qty" class="mx-1"><?php echo $item['qty'] ?></h5>
-                            <a id="decreBtn" class="btn btn-danger">-</a>
+                                <h5 id="qty" class="mx-1"><?php echo $item['qty'] ?></h5>
+                                <a id="decreBtn" class="btn btn-danger">-</a>
 
+                            </div>
+                            <div class="col-1">
+                                <span id="delCartBtn"><span class="d-none"><?php echo $item["id"] ?></span> <i class="fas fa-trash-alt"></i></span>
+                            </div>
                         </div>
-                        <div class="col-1">
-                            <span> <i class="fas fa-trash-alt"></i></span>
-                        </div>
-                    </div>
+                    <?php } ?>
                 <?php } ?>
+
 
             </div>
             <div style="height: 250px;" class="col-4 p-2 shadow-sm ms-2 border">
@@ -73,7 +78,7 @@ $totalCostOfItem = $cartModel->getTotalCost();
                     </tr>
                 </table>
                 <a href="http://localhost/e-commerce/actions/clearCartAction.php" class="btn btn-danger">Clear cart</a>
-                <a href="#" class="btn btn-dark">Check Out</a>
+                <a href="http://localhost/e-commerce/views/checkout.php" class="btn btn-dark">Check Out</a>
 
             </div>
 
@@ -81,9 +86,12 @@ $totalCostOfItem = $cartModel->getTotalCost();
 
         <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
         <script>
-            let qty = document.querySelectorAll("#qty");
-            let increBtn = document.querySelectorAll("#increBtn");
-            let decreBtn = document.querySelectorAll("#decreBtn");
+            let delCartBtn = document.querySelectorAll("#delCartBtn");
+            delCartBtn.forEach(btn => btn.addEventListener("click", () => {
+
+                confirm("Are you sure to delete the item from cart?") ?
+                    location.href = `http://localhost/e-commerce/actions/deleteCartAction.php?id=${btn.firstChild.innerText}` : "";
+            }));
         </script>
 </body>
 

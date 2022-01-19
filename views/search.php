@@ -6,7 +6,6 @@ use models\ProductModel;
 
 session_start();
 
-// var_dump($_SESSION);
 $productModel = new ProductModel();
 $data = [];
 if (isset($_POST["search"]))
@@ -110,9 +109,13 @@ if (isset($_POST["search"]))
                                 <div style="height: 45%;" class="px-3">
                                     <h5 style="height: 35%;" class="mb-1 fw-bold"><?php echo $product["name"]  ?></h5>
 
-                                    <h6 class=" fw-bold ">Ks <?php echo $product["price"] ?></h6>
+                                    <h6 class=" fw-bold "><?php echo $product["price"] ?> MMK</h6>
                                     <div class="d-flex align-items-center justify-content-between">
-                                        <span><i class="fas fa-star"></i> 4</span>
+                                        <span><i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i style="color: gainsboro;" class="fas fa-star "></i></span>
 
                                         <!-- <a id="addtocart" class="btn btn-warning">View Detail</a> -->
                                         <!-- <button id="#addtocart" class="btn btn-warning fs-4 px-4"><i class="fas fa-cart-plus"></i></button> -->
