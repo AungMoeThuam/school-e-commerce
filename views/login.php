@@ -52,6 +52,8 @@ $database = Database::getDatabaseInstance();
             </div>
         </form>
     </div>
+    <?php include "./footer.php"; ?>
+
     <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 
 </body>

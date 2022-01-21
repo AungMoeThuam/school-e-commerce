@@ -18,7 +18,10 @@ if ($authResult) {
     $_SESSION["auth"]['login_status'] = true;
     echo "<pre>";
     var_dump($_SESSION);
-    header("location:http://localhost/e-commerce");
+    if ($_SESSION["auth"]["user"]["role"] == "2")
+        header("location:http://localhost/e-commerce/views/admin/profile.php");
+    else
+        header("location:http://localhost/e-commerce");
 } else {
     echo "<script>
     alert('wrong login!')

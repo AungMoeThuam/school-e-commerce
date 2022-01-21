@@ -1,12 +1,13 @@
 <?php
-// include "../../autoload/autoload.php";
+session_start();
 
-// use controllers\UserController;
+include "../../autoload/autoload.php";
 
-// $id = $_GET["id"];
-// $userModel = new UserController();
-// $user = $userModel->getUsersById($id);
-// 
+use models\auth;
+
+$auth = Auth::getAuthInstance();
+
+$auth->checkAuthForAdmin();
 ?>
 
 <!DOCTYPE html>

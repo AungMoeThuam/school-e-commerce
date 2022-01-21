@@ -20,12 +20,17 @@
     </h4>
 
     <div class="border p-2 d-flex flex-column">
-        <a class=" nav-link text-dark" href="./users.php">Customers</a>
-        <a class=" nav-link text-dark" href="./products.php">Products</a>
-        <a class=" nav-link text-dark">Orders</a>
-        <a class=" nav-link text-dark">Profile</a>
-        <button class="btn btn-dark mt-2">Logout</button>
+        <a id="navLink" class=" nav-link text-dark" href="./users.php">Customers</a>
+        <a id="navLink" class=" nav-link text-dark" href="./products.php">Products</a>
+        <a id="navLink" class=" nav-link text-dark" href="./orders.php">Orders</a>
+        <a id="navLink" class=" nav-link text-dark" href="./profile.php">Profile</a>
+        <h6 id="logoutBtn" class=" btn btn-warning"> Logout</h6>
 
     </div>
-
 </div>
+<script>
+    let logoutBtn = document.querySelector("#logoutBtn");
+    logoutBtn.addEventListener("click", () => {
+        confirm("Do you confirm to logout?") ? location.href = "http://localhost/e-commerce/actions/logoutAction.php" : "";
+    })
+</script>

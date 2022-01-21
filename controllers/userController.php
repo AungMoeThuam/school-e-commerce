@@ -27,7 +27,8 @@ class UserController
 
     public function getUsersById($id)
     {
-        $sql = "SELECT * FROM users WHERE id = ?";
+        // $sql = "SELECT * FROM users WHERE id = ?";
+        $sql = "SELECT users.id,users.name,users.email,users.phone,users.password,users.address,roles.name As role FROM users JOIN roles ON roles.id = users.role_id  WHERE users.id = ?";
         $statement = $this->database->prepare($sql);
         $statement->execute([$id]);
         return $statement->fetch();

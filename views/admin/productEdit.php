@@ -1,10 +1,16 @@
 <?php
+session_start();
 
 use models\ProductModel;
 use models\Database;
 
 include "../../autoload/autoload.php";
 
+use models\auth;
+
+$auth = Auth::getAuthInstance();
+
+$auth->checkAuthForAdmin();
 $id = $_GET["id"];
 $productModel = new ProductModel();
 $product = $productModel->getProductsById($id);
@@ -34,13 +40,13 @@ $categorys = $database->query("SELECT * FROM categories");
 
 <body>
     <?php include "./adminPanel.php" ?>
-    <div class="container">
+    <div class="container mb-2">
 
         <div class="row offset-2">
             <?php include "./sideNav.php" ?>
             <div class="col-4 mt-2 shadow-sm border p-0 ms-2">
 
-                <h6 class="p-2 fw-bold  ">New Product </h6>
+                <h6 class="p-2 fw-bold  ">Edit Product </h6>
                 <form action="http://localhost/e-commerce/actions/adminActions/productActions/update.php" method="POST" enctype="multipart/form-data" class=" card p-2">
                     <input type="hidden" name="id" value="<?php echo $product["id"]  ?> ">
                     <input class=" form-control" accept="image/*" type="file" name="img" id="selectImg">
@@ -74,6 +80,7 @@ $categorys = $database->query("SELECT * FROM categories");
         </div>
     </div>
 
+    <?php include "../footer.php"; ?>
 
     <script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script>

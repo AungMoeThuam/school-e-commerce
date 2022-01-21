@@ -30,20 +30,32 @@ class Auth
         return $user;
     }
 
-    public function checkAuth()
+    public function checkAuthForUser()
     {
 
-        if (isset($_SESSION["auth"]) && $_SESSION["auth"]['login_status'] === true)
+        if (isset($_SESSION["auth"]) && $_SESSION["auth"]['login_status'] === true && $_SESSION["auth"]["user"]["role"] == "1")
+            return;
+        else
+            header('location:http://localhost/e-commerce/views/login.php');
+    }
+    public function checkAuthForAdmin()
+    {
+
+        if (isset($_SESSION["auth"]) && $_SESSION["auth"]['login_status'] === true && $_SESSION["auth"]["user"]["role"] == "2")
             return;
         else
             header('location:http://localhost/e-commerce/views/login.php');
     }
 
+
     public function checkAlreadyLoginOrNot()
     {
 
         if (isset($_SESSION["auth"]) && $_SESSION["auth"]['login_status'] === true)
-            header('location:http://localhost/e-commerce/views/profile.php');
+            if ($_SESSION["auth"]["user"]["role"] == "2")
+                header('location:http://localhost/e-commerce/views/admin/profile.php');
+            else
+                header('location:http://localhost/e-commerce/views/profile.php');
     }
 }
 

@@ -1,3 +1,12 @@
+<?php
+function echoFirstWordOfString($word)
+{
+    $newWord = explode(" ", $word);
+    echo $newWord[0];
+}
+
+
+?>
 <style>
     #navbar {
         background-color: #000000;
@@ -10,7 +19,7 @@
 <nav id="navbar" class="navbar navbar-expand-lg navbar-dark sticky-top ">
     <div class="container-fluid">
         <a href="http://localhost/e-commerce" class=" navbar-brand">
-            <img src="http://localhost/e-commerce/assets/logo.svg" width="250" alt="logo" class=" img-fluid">
+            <img src="http://localhost/e-commerce/assets/logo.png" width="250" alt="logo" class=" img-fluid">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -28,7 +37,7 @@
                 <ul class="navbar-nav pe-lg-3 ms-lg-5 align-items-lg-center">
 
                     <li class="nav-item">
-                        <a href="http://localhost/e-commerce/views/profile.php" class="nav-link  " style="font-size: 25px;color:aliceblue;">
+                        <a href="http://localhost/e-commerce/views/admin/profile.php" class="nav-link  " style="font-size: 25px;color:aliceblue;">
 
                             <?php if (isset($_SESSION["auth"]["login_status"])) { ?>
                                 <h6 class=" text-center fs-6"> <?php echoFirstWordOfString($_SESSION["auth"]["user"]["name"]); ?> </h6>

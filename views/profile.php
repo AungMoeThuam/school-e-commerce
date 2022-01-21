@@ -6,13 +6,18 @@ include "/xampp/htdocs/e-commerce/autoload/autoload.php";
 
 use controllers\UserController;
 use models\auth;
+use models\OrderModel;
 
 $auth = Auth::getAuthInstance();
 
-$auth->checkAuth();
+$auth->checkAuthForUser();
 $user_id = $_SESSION["auth"]["user"]["id"];
 $userController = new UserController();
+$orderModel = new OrderModel();
+$orderList = $orderModel->getOrderListbyUserId($user_id);
 $user = $userController->getUsersById($user_id);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -69,7 +74,7 @@ $user = $userController->getUsersById($user_id);
     <?php include "./navbar.php" ?>
     <!-- <?php var_dump($_SESSION["auth"]) ?> -->
 
-    <div class="container justify-content-center">
+    <div class="container justify-content-center mb-2">
 
         <div class="row mt-2">
 
@@ -86,22 +91,49 @@ $user = $userController->getUsersById($user_id);
             </div>
             <div id="content" class="col-sm-12  col-md-8 col-lg-5">
                 <div style="display:block" id="profile">
-                    <form class=" card p-2" action="" method="POST">
-                        <label class="form-label" for="Id">Id</label>
-                        <input class="form-control" type="text" name="id" value="<?php echo $user["id"] ?>" disabled id="">
-                        <label class="form-label" for="Name">Name</label>
+                    <form class=" card p-2" action="http://localhost/e-commerce/actions/updateUserAction.php" method="POST">
+                        <label class="form-label" for="id">Id</label>
+                        <input class="form-control" type="text" name="id" value="<?php echo $user["id"] ?>" disabled>
+                        <label class="form-label" for="name">Name</label>
                         <input class="form-control" type="text" name="name" value="<?php echo $user["name"] ?>" id="">
-                        <label class="form-label" for="Email">Email</label>
+                        <label class="form-label" for="email">Email</label>
                         <input class="form-control" type="email" name="email" value="<?php echo $user["email"] ?>" id="">
-                        <label class="form-label" for="Phone">Phone</label>
+                        <label class="form-label" for="phone">Phone</label>
                         <input class="form-control" type="number" name="phone" value="<?php echo $user["phone"] ?>" id="phone">
-                        <label class="form-label" for="Address">Address</label>
+                        <label class="form-label" for="dddress">Address</label>
                         <input class="form-control" type="text" name="address" value="<?php echo $user["address"] ?>" id="phone">
+                        <label class="form-label" for="password">Password</label>
+                        <input class="form-control" type="password" name="password" value="<?php echo $user["password"] ?>" id="phone">
                         <button type="submit" class="mt-1 btn btn-dark">Update</button>
                     </form>
                 </div>
                 <div style="display:none" id="order">
-                    Orders
+                    <h5>Order List</h5>
+                    <table class=" table table-bordered">
+                        <thead class=" fw-bold">
+                            <tr>
+                                <td>Id</td>
+                                <td>Customer Name</td>
+                                <td>Date</td>
+                                <td>Total Qty</td>
+                                <td>Total Price</td>
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($orderList as $order) { ?>
+                                <tr>
+                                    <td> <?php echo $order["order_id"]  ?></td>
+                                    <td> <?php echo $order["user_name"]  ?></td>
+                                    <td> <?php echo $order["date"]  ?></td>
+                                    <td> <?php echo $order["total_qty"]  ?></td>
+                                    <td> <?php echo $order["total_price"]  ?></td>
+
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
                 </div>
 
             </div>

@@ -1,8 +1,14 @@
 <?php
+session_start();
+
 include "../../autoload/autoload.php";
 
 use controllers\UserController;
+use models\auth;
 
+$auth = Auth::getAuthInstance();
+
+$auth->checkAuthForAdmin();
 $id = $_GET["id"];
 $userModel = new UserController();
 $user = $userModel->getUsersById($id);
@@ -28,7 +34,7 @@ $user = $userModel->getUsersById($id);
 
 
     <?php include "./adminPanel.php" ?>
-    <div class="container">
+    <div class="container mb-2">
 
         <div class="row offset-2">
             <?php include "./sideNav.php" ?>
@@ -66,6 +72,7 @@ $user = $userModel->getUsersById($id);
         </div>
     </div>
 
+    <?php include "../footer.php"; ?>
 
     <script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 

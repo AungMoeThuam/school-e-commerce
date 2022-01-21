@@ -3,8 +3,11 @@ session_start();
 include "../autoload/autoload.php";
 
 use models\CartModel;
+use models\auth;
 
-$cart = $_SESSION["cart"];
+$auth = Auth::getAuthInstance();
+// $auth->checkAuthForUser();
+$cart = isset($_SESSION["cart"]) ? $_SESSION["cart"] : [];
 $cartModel = CartModel::getCartInstance();
 $totalCostOfItem = $cartModel->getTotalCost();
 ?>
@@ -26,7 +29,7 @@ $totalCostOfItem = $cartModel->getTotalCost();
 
 <body>
     <?php include "./navbar.php" ?>
-    <div class="container">
+    <div style="min-height: 600px;" class="container">
 
         <div class="row mt-2 offset-1">
             <div class="col-7   ">
@@ -46,10 +49,10 @@ $totalCostOfItem = $cartModel->getTotalCost();
                                 MMK
                             </div>
                             <div class="col-2 d-flex align-items-center justify-content-between">
-                                <a id="increBtn" class="btn btn-warning">+</a>
+                                <!-- <a id="increBtn" class="btn btn-warning">+</a> -->
 
-                                <h5 id="qty" class="mx-1"><?php echo $item['qty'] ?></h5>
-                                <a id="decreBtn" class="btn btn-danger">-</a>
+                                Qty <input onchange="changeQty(<?php echo $item['id'] ?>)" id="qty" type="number" min="1" style="width:40px" class="mx-1" value="<?php echo $item['qty'] ?>">
+                                <!-- <a id="decreBtn" class="btn btn-danger">-</a> -->
 
                             </div>
                             <div class="col-1">
@@ -84,15 +87,34 @@ $totalCostOfItem = $cartModel->getTotalCost();
 
         </div>
 
-        <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-        <script>
-            let delCartBtn = document.querySelectorAll("#delCartBtn");
-            delCartBtn.forEach(btn => btn.addEventListener("click", () => {
+    </div>
 
-                confirm("Are you sure to delete the item from cart?") ?
-                    location.href = `http://localhost/e-commerce/actions/deleteCartAction.php?id=${btn.firstChild.innerText}` : "";
-            }));
-        </script>
+    <?php include "./footer.php"; ?>
+
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script>
+        let delCartBtn = document.querySelectorAll("#delCartBtn");
+        delCartBtn.forEach(btn => btn.addEventListener("click", () => {
+
+            confirm("Are you sure to delete the item from cart?") ?
+                location.href = `http://localhost/e-commerce/actions/deleteCartAction.php?id=${btn.firstChild.innerText}` : "";
+        }));
+
+
+        async function changeQty(id) {
+            let req = await fetch("http://localhost/e-commerce/actions/updateCartAction.php", {
+                method: "POST",
+                body: JSON.stringify({
+                    id,
+                    qty: event.target.value
+                }),
+                headers: {
+                    'content-type': "application/json"
+                }
+            })
+        }
+    </script>
+
 </body>
 
 </html>

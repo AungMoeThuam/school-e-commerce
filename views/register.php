@@ -8,6 +8,7 @@ use models\Auth;
 
 
 $auth = Auth::getAuthInstance();
+
 $auth->checkAlreadyLoginOrNot();
 ?>
 
@@ -28,7 +29,28 @@ $auth->checkAlreadyLoginOrNot();
 
 <body>
     <?php include "./navbar.php" ?>
-    <h1>register</h1>
+    <div style="min-height: 500px" class="d-flex justify-content-center align-items-center p-2">
+
+        <form style="width: 300px;" action="http://localhost/e-commerce/actions/registerAction.php" class="card p-2" method="POST">
+            <h4 class="text-center">Register Form</h4>
+            <label for="name" class="form-label">Name</label>
+            <input type="text" name="name" class="form-control" required>
+            <label for="name" class="form-label">Email</label>
+            <input type="text" name="email" class="form-control" required>
+            <label for="name" class="form-label">Password</label>
+            <input type="password" name="password" class="form-control" required>
+            <label for="name" class="form-label">Confirm Password</label>
+            <input type="password" name="confirm_password" class="form-control" required>
+            <label for="name" class="form-label">Phone</label>
+            <input type="text" name="phone" class="form-control" required>
+            <label for="name" class="form-label">Address</label>
+            <input type="text" name="address" class="form-control" required>
+            <input type="submit" value="Sign Up" class="form-control mt-2 bg-dark text-light">
+        </form>
+    </div>
+
+    <?php include "./footer.php"; ?>
+
     <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 
 </body>

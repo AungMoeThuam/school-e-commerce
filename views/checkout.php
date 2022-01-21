@@ -4,7 +4,11 @@ session_start();
 include ".././autoload/autoload.php";
 
 use models\CartModel;
+use models\auth;
 
+$auth = Auth::getAuthInstance();
+
+$auth->checkAuthForUser();
 $cart = $_SESSION["cart"];
 $cartModel = CartModel::getCartInstance();
 $totalCostOfItem = $cartModel->getTotalCost();
@@ -28,7 +32,7 @@ $totalCostOfItem = $cartModel->getTotalCost();
 
 <body class=" bg-light">
     <?php include "./navbar.php" ?>
-    <div class="container justify-content-center">
+    <div class="container justify-content-center mb-2">
         <form action="http://localhost/e-commerce/actions/orderAction.php" method="POST" class="row offset-2">
             <div class="col-6 mt-2 ">
                 <h5> Payment Method</h5>
@@ -90,6 +94,8 @@ $totalCostOfItem = $cartModel->getTotalCost();
         </form>
 
     </div>
+    <?php include "./footer.php"; ?>
+
     <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 
 </body>

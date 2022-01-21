@@ -19,7 +19,7 @@ function echoFirstWordOfString($word)
 <nav id="navbar" class="navbar navbar-expand-lg navbar-dark sticky-top ">
     <div class="container-fluid">
         <a href="http://localhost/e-commerce" class=" navbar-brand">
-            <img src="http://localhost/e-commerce/assets/logo.svg" width="250" alt="logo" class=" img-fluid">
+            <img src="http://localhost/e-commerce/assets/logo.png" width="250" alt="logo" class=" img-fluid">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -31,9 +31,9 @@ function echoFirstWordOfString($word)
                     <li class="nav-item">
                         <a class="nav-link active" href="http://localhost/e-commerce/views/shop.php">Shop</a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link active" href="#">Help</a>
-                    </li>
+                    </li> -->
                 </ul>
                 <form action="http://localhost/e-commerce/views/search.php" method="POST" style="height:40px;" class="form-control d-none d-lg-flex align-items-center me-lg-5 ms-lg-5  p-0">
 
@@ -46,7 +46,7 @@ function echoFirstWordOfString($word)
                     <li class="nav-item">
                         <a href="http://localhost/e-commerce/views/profile.php" class="nav-link  " style="font-size: 25px;color:aliceblue;">
 
-                            <?php if (isset($_SESSION["auth"]["login_status"])) { ?>
+                            <?php if (isset($_SESSION["auth"]["login_status"]) && $_SESSION["auth"]["user"]["role"] == "1") { ?>
                                 <h6 class=" text-center fs-6"> <?php echoFirstWordOfString($_SESSION["auth"]["user"]["name"]); ?> </h6>
                             <?php } else { ?>
                                 <i class="fas fa-user"></i>
@@ -56,7 +56,9 @@ function echoFirstWordOfString($word)
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="http://localhost/e-commerce/views/cart.php" class="nav-link" style="font-size: 25px;color:aliceblue;"><i class="fas fa-shopping-cart"></i>
+                        <a href="http://localhost/e-commerce/views/cart.php" class="nav-link d-flex justify-content-between" style="font-size: 25px;color:aliceblue;">
+                            <i class="fas fa-shopping-cart"></i>
+                            <h6><?php echo isset($_SESSION["cart"]) ? count($_SESSION["cart"]) : 0 ?></h6>
                         </a>
                     </li>
                 </ul>

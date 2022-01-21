@@ -1,9 +1,15 @@
 <?php
+session_start();
 
 use models\ProductModel;
 
 include "../../autoload/autoload.php";
 
+use models\auth;
+
+$auth = Auth::getAuthInstance();
+
+$auth->checkAuthForAdmin();
 $productModel = new ProductModel();
 $products = $productModel->getAllProducts();
 ?>
@@ -28,7 +34,7 @@ $products = $productModel->getAllProducts();
 
 
     <?php include "./adminPanel.php" ?>
-    <div class="container">
+    <div style="min-height: 600px;" class="container">
 
         <div class="row">
             <?php include "./sideNav.php" ?>
@@ -77,6 +83,7 @@ $products = $productModel->getAllProducts();
         </div>
     </div>
 
+    <?php include "../footer.php"; ?>
 
     <script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script>

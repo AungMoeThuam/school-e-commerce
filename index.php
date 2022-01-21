@@ -84,12 +84,12 @@ session_start();
     <div style="width: 100%;" class=" d-flex flex-column  align-items-center">
         <div id="img-2" class=" d-flex flex-column justify-content-center align-items-center ps-5">
             <h1 id="img-1-text " class=" text-center text-white fs-1 fw-bolder "> Technology Products</h1>
-            <button style="width: 200px; height:60px" class="btn text-white fs-5 fw-bold border border-4 bg-transparent">
-                Top to see more
+            <button id="taptosee" style="width: 200px; height:60px" class="btn text-white fs-5 fw-bold border border-4 bg-transparent">
+                Tap to see more
             </button>
         </div>
 
-        <h1 class=" pt-2 pb-2">Categories </h1>
+        <!-- <h1 class=" pt-2 pb-2">Categories </h1>
         <div id="category_icon_box" class=" d-flex justify-content-center flex-wrap gap-1 mt-2 mb-2 ">
 
             <div class="card text-center">
@@ -125,12 +125,12 @@ session_start();
                 <h5>Electronic</h5>
             </div>
 
-        </div>
+        </div> -->
         <div id="img-3" class="d-flex justify-content-start align-items-center ps-5">
-            <h1 id="img-2-text" class=" fs-1 fw-bolder "> Sporting Goods</h1>
+            <h1 id="img-2-text" class=" fs-1 fw-bolder "> Technology Goods</h1>
         </div>
         <div id="img-1">
-            <h1 id="img--text" class=" fs-1 fw-bolder "> Camping</h1>
+            <!-- <h1 id="img--text" class=" fs-1 fw-bolder "> Camping</h1> -->
         </div>
 
 
@@ -140,6 +140,12 @@ session_start();
 
 
     <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script>
+        let taptosee = document.querySelector('#taptosee');
+        taptosee.addEventListener("click", () => {
+            location.href = "http://localhost/e-commerce/views/shop.php";
+        })
+    </script>
 </body>
 
 </html>

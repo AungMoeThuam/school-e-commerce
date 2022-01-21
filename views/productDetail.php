@@ -27,7 +27,7 @@ $product = $productController->getProductById($_GET["id"]);
 
 <body>
     <?php include "./navbar.php" ?>
-    <div class="container justify-content-center">
+    <div style="min-height: 500px;" class="container justify-content-center">
         <div class=" mt-4 border border-2 row ">
             <h5 id="productId" class="d-none"><?php echo $_GET["id"]; ?></h5>
             <div class="col-6 border-end d-flex py-3 justify-content-center align-items-center">
@@ -67,6 +67,8 @@ $product = $productController->getProductById($_GET["id"]);
         </div>
 
     </div>
+    <?php include "./footer.php"; ?>
+
     <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script>
         let buyNow = document.querySelector("#buyNow");
@@ -94,7 +96,7 @@ $product = $productController->getProductById($_GET["id"]);
                     'Content-Type': 'application/json'
                 }
             });
-            history.back();
+            location.href = "http://localhost/e-commerce/views/shop.php";
 
         });
         increBtn.addEventListener("click", () => {

@@ -4,6 +4,11 @@ include "/xampp/htdocs/e-commerce/autoload/autoload.php";
 
 
 use controllers\productController;
+use models\Auth;
+
+
+$auth = Auth::getAuthInstance();
+// $auth->checkAuthForUser();
 
 $productController = new ProductController();
 $products = [];
@@ -53,43 +58,58 @@ if (!isset($_GET["category_id"])) {
 
 <body>
     <?php include "./navbar.php" ?>
-    <div class=" container mt-2 ">
+    <div class=" container mt-2 mb-2 ">
 
-        <div class=" row gap-4  justify-content-lg-center ">
-            <div style="height:max-content;" class=" col-lg-2 border border-1  p-0">
+        <div class=" row gap-4  justify-content-lg-center mb-2 ">
+            <div style="height:max-content;" class=" col-lg-2  border border-1  p-0">
                 <h5 class=" border border-1 ps-2  pt-2 pb-2 ">Filter</h5>
                 <div class=" border-bottom p-2">
                     <a class="btn btn-dark d-block mb-2" href="<?php echo $_SERVER["PHP_SELF"] ?>">Reset</a>
                     <h5 class="">Categories</h5>
                     <div class="d-flex flex-column  ">
-                        <div class=" mb-1">
-                            <input id="filter" chec value="1" class=" form-check-input m-1" type="checkbox" name="" id="category">Monitor
-                        </div>
-                        <div class=" mb-1">
-                            <input id="filter" value="2" class=" form-check-input m-1" type="checkbox" name="" id="category">Laptop
-                        </div>
-                        <div class=" mb-1">
-                            <input id="filter" value="3" class=" form-check-input m-1" type="checkbox" name="" id="category">Fashion
-                        </div>
-                        <div class=" mb-1">
-                            <input id="filter" value="4" class=" form-check-input m-1" type="checkbox" name="" id="category">Cosmetics
-                        </div>
-                        <div class=" mb-1">
-                            <input id="filter" value="5" class=" form-check-input m-1" type="checkbox" name="" id="category">Kitchen
-                        </div>
-                        <div class=" mb-1">
-                            <input id="filter" value="6" class=" form-check-input m-1" type="checkbox" name="" id="category">Stationery
-                        </div>
-                        <div class=" mb-1">
-                            <input id="filter" value="7" class=" form-check-input m-1" type="checkbox" name="" id="category">Furniture
-                        </div>
-                        <div>
-                            <input id="filter" value="8" class=" form-check-input m-1" type="checkbox" name="" id="category">Health
-                        </div>
+                        <a href="./shop.php?category_id=1" class=" mb-1 nav-link text-dark p-0">
+                            AirConditioner
+                        </a>
+                        <a href="./shop.php?category_id=2" class=" mb-1 nav-link text-dark p-0">
+
+                            Laptop
+                        </a>
+                        <a href="./shop.php?category_id=3" class=" mb-1 nav-link text-dark p-0">
+
+                            Keyboard
+                        </a>
+                        <a href="./shop.php?category_id=4" class=" mb-1 nav-link text-dark p-0">
+
+                            Mouse
+                        </a>
+                        <a href="./shop.php?category_id=5" class=" mb-1 nav-link text-dark p-0">
+
+                            HeadSet
+                        </a>
+                        <a href="./shop.php?category_id=6" class=" mb-1 nav-link text-dark p-0">
+
+                            Mobile
+                        </a>
+                        <a href="./shop.php?category_id=7" class=" mb-1 nav-link text-dark p-0">
+
+                            Monitor
+                        </a>
+                        <a href="./shop.php?category_id=8" class=" mb-1 nav-link text-dark p-0">
+
+                            Refrigerator
+                        </a>
+                        <a href="./shop.php?category_id=9" class=" mb-1 nav-link text-dark p-0">
+
+                            WashingMachine
+                        </a>
+                        <a href="./shop.php?category_id=10" class=" mb-1 nav-link text-dark p-0">
+
+                            E-Pots
+                        </a>
                     </div>
                 </div>
 
-                <div class="p-2 border-bottom">
+                <!-- <div class="p-2 border-bottom">
                     <h5>Price Range</h5>
                     <div class="d-flex align-items-center ">
                         <input type="number" placeholder="min" class=" form-control p-1 me-1" name="" id="">-
@@ -97,7 +117,7 @@ if (!isset($_GET["category_id"])) {
                     </div>
                     <input class=" form-control p-1 mt-1 bg-dark text-white" type="button" value="Set Price">
 
-                </div>
+                </div> -->
             </div>
             <div class="col-lg-9     pt-2  ">
                 <h5>Products</h5>
@@ -136,9 +156,17 @@ if (!isset($_GET["category_id"])) {
 
         </div>
     </div>
+    <?php include "./footer.php"; ?>
+
     <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 
 
+
+</body>
+
+</html>
+
+<!-- 
     <script>
         let filter = document.querySelectorAll("#filter");
         console.log(filter);
@@ -176,9 +204,4 @@ if (!isset($_GET["category_id"])) {
             }
             localStorage.setItem("filterCheckedList", JSON.stringify(newArray));
         }
-    </script>
-
-
-</body>
-
-</html>
+    </script> -->

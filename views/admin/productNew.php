@@ -1,9 +1,15 @@
 <?php
+session_start();
 
 use models\Database;
 
 include "../../autoload/autoload.php";
 
+use models\auth;
+
+$auth = Auth::getAuthInstance();
+
+$auth->checkAuthForAdmin();
 $database = Database::getDatabaseInstance();
 $categorys = $database->query("SELECT * FROM categories");
 
