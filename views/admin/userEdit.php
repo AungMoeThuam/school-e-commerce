@@ -3,14 +3,14 @@ session_start();
 
 include "../../autoload/autoload.php";
 
-use controllers\UserController;
 use models\auth;
+use models\UserModel;
 
 $auth = Auth::getAuthInstance();
 
 $auth->checkAuthForAdmin();
 $id = $_GET["id"];
-$userModel = new UserController();
+$userModel = new UserModel();
 $user = $userModel->getUsersById($id);
 ?>
 

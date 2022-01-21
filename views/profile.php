@@ -4,18 +4,19 @@ session_start();
 include "/xampp/htdocs/e-commerce/autoload/autoload.php";
 
 
-use controllers\UserController;
+
 use models\auth;
 use models\OrderModel;
+use models\UserModel;
 
 $auth = Auth::getAuthInstance();
 
 $auth->checkAuthForUser();
 $user_id = $_SESSION["auth"]["user"]["id"];
-$userController = new UserController();
+$userModel = new UserModel();
 $orderModel = new OrderModel();
 $orderList = $orderModel->getOrderListbyUserId($user_id);
-$user = $userController->getUsersById($user_id);
+$user = $userModel->getUsersById($user_id);
 
 
 ?>
@@ -27,7 +28,7 @@ $user = $userController->getUsersById($user_id);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>City Light</title>
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../fontawesome/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">

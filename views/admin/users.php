@@ -1,18 +1,16 @@
 <?php
 session_start();
 
-use controllers\UserController;
-use models\ProductModel;
-
 include "../../autoload/autoload.php";
 
 use models\auth;
+use models\UserModel;
 
 $auth = Auth::getAuthInstance();
 
 $auth->checkAuthForAdmin();
-$userController = new UserController();
-$users = $userController->getAllUsers();
+$userModel = new UserModel();
+$users = $userModel->getAllUsers();
 ?>
 
 <!DOCTYPE html>

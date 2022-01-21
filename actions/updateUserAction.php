@@ -2,9 +2,9 @@
 session_start();
 include "../autoload/autoload.php";
 
-use controllers\UserController;
+use models\UserModel;
 
-$userModel = new UserController();
+$userModel = new UserModel();
 
 $id = $_SESSION["auth"]["user"]["id"];
 $name = $_POST["name"];

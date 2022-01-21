@@ -1,9 +1,10 @@
 <?php
 include "../../../autoload/autoload.php";
 
-use controllers\UserController;
 
-$userModel = new UserController();
+use models\UserModel;
+
+$userModel = new UserModel();
 
 $name = $_POST["name"];
 $email = $_POST["email"];

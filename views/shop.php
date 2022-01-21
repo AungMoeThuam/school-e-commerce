@@ -1,21 +1,21 @@
 <?php
 session_start();
-include "/xampp/htdocs/e-commerce/autoload/autoload.php";
+
+include_once "../autoload/autoload.php";
 
 
-use controllers\productController;
 use models\Auth;
-
+use models\ProductModel;
 
 $auth = Auth::getAuthInstance();
 // $auth->checkAuthForUser();
 
-$productController = new ProductController();
+$productModel = new ProductModel();
 $products = [];
 if (!isset($_GET["category_id"])) {
-    $products = $productController->showProducts();
+    $products = $productModel->getAllProducts();
 } else {
-    $products = $productController->getProductByCategoryId($_GET["category_id"]);
+    $products = $productModel->getProductsByCategory($_GET["category_id"]);
 }
 
 ?>
@@ -27,7 +27,7 @@ if (!isset($_GET["category_id"])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopping Paradise</title>
+    <title>City Light</title>
     <link rel="icon" href="../assets/titleLogo.svg">
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../fontawesome/css/all.min.css">
@@ -130,7 +130,7 @@ if (!isset($_GET["category_id"])) {
 
                             <div id="#productImg" class=" p-3 d-flex align-items-center justify-content-center" style="height: 60%;"><img src="../assets/products_img/<?php echo $product["photo"] ?>" class=" img-fluid" alt=""></div>
                             <div style="height: 40%;" class="px-3">
-                                <h5 style="height: 35%;" class="mb-1 overflow-hidden fw-bold"><?php echo $product["name"]  ?>...</h5>
+                                <h6 style="height: 35%;text-align:justify" class="mb-1 overflow-hidden fw-bold"><?php echo $product["name"]  ?>...</h6>
 
                                 <h6 class=" fw-bold "><?php echo $product["price"] ?> MMK</h6>
                                 <div class="d-flex align-items-center justify-content-between">

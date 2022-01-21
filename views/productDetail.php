@@ -2,10 +2,11 @@
 session_start();
 include ".././autoload/autoload.php";
 
-use controllers\ProductController;
 
-$productController = new ProductController();
-$product = $productController->getProductById($_GET["id"]);
+use models\ProductModel;
+
+$productModel = new ProductModel();
+$product = $productModel->getProductsById($_GET["id"]);
 
 
 ?>

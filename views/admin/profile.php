@@ -4,15 +4,16 @@
 session_start();
 include "/xampp/htdocs/e-commerce/autoload/autoload.php";
 
-use controllers\UserController;
+
 
 
 use models\auth;
+use models\UserModel;
 
 $auth = Auth::getAuthInstance();
 
 $auth->checkAuthForAdmin();
-$userModel = new UserController();
+$userModel = new UserModel();
 $user = $userModel->getUsersById($_SESSION["auth"]["user"]["id"]);
 ?>
 
@@ -83,6 +84,8 @@ $user = $userModel->getUsersById($_SESSION["auth"]["user"]["id"]);
                         <input class="form-control" type="text" name="name" value="<?php echo $user["name"] ?>" id="">
                         <label class="form-label" for="Email">Email</label>
                         <input class="form-control" type="email" name="email" value="<?php echo $user["email"] ?>" id="">
+                        <label class="form-label" for="password">Password</label>
+                        <input class="form-control" type="text" name="password" value="<?php echo $user["password"] ?>" id="">
                         <label class="form-label" for="Phone">Phone</label>
                         <input class="form-control" type="number" name="phone" value="<?php echo $user["phone"] ?>" id="phone">
                         <label class="form-label" for="Address">Address</label>

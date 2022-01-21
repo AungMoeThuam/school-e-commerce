@@ -4,9 +4,10 @@
 include "../../../autoload/autoload.php";
 echo "<script>confirm('Sure to delete?')</script>";
 
-use controllers\UserController;
 
-$userModel = new UserController();
+use models\UserModel;
+
+$userModel = new UserModel();
 
 $id = $_GET["id"];
 

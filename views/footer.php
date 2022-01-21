@@ -27,10 +27,10 @@
             <div class="d-flex flex-column justify-content-start align-items-start ">
 
 
-                <a href="#" class=" p-0 nav-link text-light mx-1">About Us</a>
-                <a href="#" class=" p-0 nav-link text-light mx-1">Contact Us</a>
-                <a href="#" class=" p-0 nav-link text-light mx-1">Privacy & Policy</a>
-                <a href="#" class=" p-0 nav-link text-light mx-1">Terms and Services</a>
+                <a href="http://localhost/e-commerce/views/aboutus.php" class=" p-0 nav-link text-light mx-1">About Us</a>
+                <a href="http://localhost/e-commerce/views/contactus.php" class=" p-0 nav-link text-light mx-1">Contact Us</a>
+                <a href="http://localhost/e-commerce/views/privacy&policy.php" class=" p-0 nav-link text-light mx-1">Privacy & Policy</a>
+                <a href="http://localhost/e-commerce/views/termsandservices.php" class=" p-0 nav-link text-light mx-1">Terms and Services</a>
 
             </div>
         </div>

@@ -3,9 +3,10 @@ session_start();
 include "../../autoload/autoload.php";
 include "../autoload/autoload.php";
 
-use controllers\UserController;
 
-$userModel = new UserController();
+use models\UserModel;
+
+$userModel = new UserModel();
 
 $id = $_SESSION["auth"]["user"]["id"];
 $name = $_POST["name"];
