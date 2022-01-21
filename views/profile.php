@@ -3,8 +3,6 @@ session_start();
 
 include "/xampp/htdocs/e-commerce/autoload/autoload.php";
 
-
-
 use models\auth;
 use models\OrderModel;
 use models\UserModel;
@@ -17,7 +15,6 @@ $userModel = new UserModel();
 $orderModel = new OrderModel();
 $orderList = $orderModel->getOrderListbyUserId($user_id);
 $user = $userModel->getUsersById($user_id);
-
 
 ?>
 
@@ -73,7 +70,6 @@ $user = $userModel->getUsersById($user_id);
 
 <body>
     <?php include "./navbar.php" ?>
-    <!-- <?php var_dump($_SESSION["auth"]) ?> -->
 
     <div class="container justify-content-center mb-2">
 
@@ -148,7 +144,6 @@ $user = $userModel->getUsersById($user_id);
         let inputs = document.querySelectorAll("input");
         let h5s = document.querySelectorAll("h5");
         let logoutBtn = document.querySelector("#logoutBtn");
-        // let content = document.getElementById("content");
         let profile = document.getElementById("profile");
         let order = document.getElementById("order");
 

@@ -8,7 +8,6 @@ use models\Database;
 use models\Auth;
 
 $auth = Auth::getAuthInstance();
-// $auth->checkAuthForUser();
 $database = Database::getDatabaseInstance();
 $productModel = new ProductModel();
 $data = [];
@@ -101,16 +100,7 @@ if (isset($_POST["search"]))
                         </a>
                     </div>
                 </div>
-                <!-- 
-                <div class="p-2 border-bottom">
-                    <h5>Price Range</h5>
-                    <div class="d-flex align-items-center ">
-                        <input type="number" placeholder="min" class=" form-control p-1 me-1" name="" id="">-
-                        <input type="number" placeholder="max" class=" form-control p-1 ms-1" name="" id="">
-                    </div>
-                    <input class=" form-control p-1 mt-1 bg-dark text-white" type="button" value="Set Price">
 
-                </div> -->
             </div>
             <div class="col-lg-9     pt-2  ">
                 <h5>Products</h5>
@@ -135,9 +125,6 @@ if (isset($_POST["search"]))
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star"></i>
                                             <i style="color: gainsboro;" class="fas fa-star "></i></span>
-
-                                        <!-- <a id="addtocart" class="btn btn-warning">View Detail</a> -->
-                                        <!-- <button id="#addtocart" class="btn btn-warning fs-4 px-4"><i class="fas fa-cart-plus"></i></button> -->
                                     </div>
 
                                 </div>
@@ -157,45 +144,6 @@ if (isset($_POST["search"]))
 
     <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 
-
-    <script>
-        let filter = document.querySelectorAll("#filter");
-        console.log(filter);
-
-        // localStorage.setItem("filterCheckedList", "[]");
-        let checkedList = JSON.parse(localStorage.getItem("filterCheckedList"));
-
-
-        for (i = 0; i < checkedList.length; i++) {
-            if (checkedList[i].checked === true) {
-                filter[i].checked = true;
-            }
-        }
-
-        filter.forEach(e => e.addEventListener("change", () => {
-
-            addToCheckedList({
-                id: e.value,
-                checked: e.checked
-            });
-
-            location.href = "http://localhost/e-commerce/views/shop.php?category_id=1";
-
-        }));
-
-        function addToCheckedList(element) {
-            let newArray = [...checkedList];
-
-            let elementExist = newArray.findIndex(obj => obj.id === element.id);
-
-            if (elementExist === -1) {
-                newArray = [...newArray, element];
-            } else {
-                newArray[elementExist] = element;
-            }
-            localStorage.setItem("filterCheckedList", JSON.stringify(newArray));
-        }
-    </script>
 
 
 </body>

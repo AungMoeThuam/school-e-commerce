@@ -4,8 +4,6 @@ function echoFirstWordOfString($word)
     $newWord = explode(" ", $word);
     echo $newWord[0];
 }
-
-
 ?>
 <style>
     #navbar {

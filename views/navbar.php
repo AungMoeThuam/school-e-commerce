@@ -31,9 +31,6 @@ function echoFirstWordOfString($word)
                     <li class="nav-item">
                         <a class="nav-link active" href="http://localhost/e-commerce/views/shop.php">Shop</a>
                     </li>
-                    <!-- <li class="nav-item">
-                        <a class="nav-link active" href="#">Help</a>
-                    </li> -->
                 </ul>
                 <form action="http://localhost/e-commerce/views/search.php" method="POST" style="height:40px;" class="form-control d-none d-lg-flex align-items-center me-lg-5 ms-lg-5  p-0">
 

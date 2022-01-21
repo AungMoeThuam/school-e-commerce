@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 ?>
 
 <!DOCTYPE html>
@@ -25,8 +24,6 @@ session_start();
             <div class="col p-4">
                 <h1>Let Us Introduce Our Company and Services</h1>
                 <p style="text-align: justify;">
-
-
                     “City light” company limited is one of the largest
                     electronic products retailing marts in Yangon, Myanmar.
                     It sells a variety of electronic products especially for

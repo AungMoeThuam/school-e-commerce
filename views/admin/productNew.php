@@ -31,9 +31,6 @@ $categorys = $database->query("SELECT * FROM categories");
 </head>
 
 <body>
-
-
-
     <?php include "./adminPanel.php" ?>
     <div class="container">
 

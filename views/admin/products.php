@@ -30,9 +30,6 @@ $products = $productModel->getAllProducts();
 </head>
 
 <body>
-
-
-
     <?php include "./adminPanel.php" ?>
     <div style="min-height: 600px;" class="container">
 

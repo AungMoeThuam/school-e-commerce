@@ -6,7 +6,6 @@ use models\CartModel;
 use models\auth;
 
 $auth = Auth::getAuthInstance();
-// $auth->checkAuthForUser();
 $cart = isset($_SESSION["cart"]) ? $_SESSION["cart"] : [];
 $cartModel = CartModel::getCartInstance();
 $totalCostOfItem = $cartModel->getTotalCost();
@@ -49,11 +48,7 @@ $totalCostOfItem = $cartModel->getTotalCost();
                                 MMK
                             </div>
                             <div class="col-2 d-flex align-items-center justify-content-between">
-                                <!-- <a id="increBtn" class="btn btn-warning">+</a> -->
-
                                 Qty <input onchange="changeQty(<?php echo $item['id'] ?>)" id="qty" type="number" min="1" style="width:40px" class="mx-1" value="<?php echo $item['qty'] ?>">
-                                <!-- <a id="decreBtn" class="btn btn-danger">-</a> -->
-
                             </div>
                             <div class="col-1">
                                 <span id="delCartBtn"><span class="d-none"><?php echo $item["id"] ?></span> <i class="fas fa-trash-alt"></i></span>

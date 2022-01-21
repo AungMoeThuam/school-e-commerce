@@ -1,12 +1,10 @@
 <?php
 
 namespace models;
-// session_start();
+
 include_once "/xampp/htdocs/e-commerce/models/database.php";
 
 use models\Database;
-
-
 
 class Auth
 {
@@ -58,9 +56,3 @@ class Auth
                 header('location:http://localhost/e-commerce/views/profile.php');
     }
 }
-
-// $auth = new Auth();
-
-// if ($auth->checkLogin("aung@gmail.com", "aung@2020")) {
-//     echo "login success!";
-// }

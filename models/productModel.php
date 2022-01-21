@@ -4,7 +4,6 @@ namespace models;
 
 use models\Database;
 
-
 class ProductModel
 {
     private $database;

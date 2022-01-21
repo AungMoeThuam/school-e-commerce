@@ -1,11 +1,6 @@
 <?php
-
-
 session_start();
 include "/xampp/htdocs/e-commerce/autoload/autoload.php";
-
-
-
 
 use models\auth;
 use models\UserModel;
@@ -98,12 +93,8 @@ $user = $userModel->getUsersById($_SESSION["auth"]["user"]["id"]);
             </div>
         </div>
     </div>
-
-
     <?php include "../footer.php"; ?>
     <script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-
-
 </body>
 </body>
 

@@ -5,8 +5,6 @@ session_start();
 
 use models\Auth;
 
-
-
 $auth = Auth::getAuthInstance();
 
 $auth->checkAlreadyLoginOrNot();

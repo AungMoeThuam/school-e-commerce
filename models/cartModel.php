@@ -2,12 +2,8 @@
 
 namespace models;
 
-
-
 class CartModel
 {
-
-
     public function __construct()
     {
         if (isset($_SESSION["cart"]) === false) {
@@ -19,6 +15,7 @@ class CartModel
     {
         return new CartModel();
     }
+
     public function getAllItems()
     {
         $itemList = [];

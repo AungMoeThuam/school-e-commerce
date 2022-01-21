@@ -82,6 +82,24 @@ $product = $productModel->getProductsById($_GET["id"]);
         let increBtn = document.querySelector("#increBtn");
         let decreBtn = document.querySelector("#decreBtn");
 
+        buyNow.addEventListener("click", async () => {
+
+            let req = await fetch("http://localhost/e-commerce/actions/addToCartAction.php", {
+                method: "POST",
+                body: JSON.stringify({
+                    id: id.innerText,
+                    name: name.innerText,
+                    img: img.src,
+                    qty: qty.innerText,
+                    price: price.innerText
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            location.href = "http://localhost/e-commerce/views/checkout.php";
+
+        });
         addToCart.addEventListener("click", async () => {
 
             let req = await fetch("http://localhost/e-commerce/actions/addToCartAction.php", {

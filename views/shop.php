@@ -3,12 +3,10 @@ session_start();
 
 include_once "../autoload/autoload.php";
 
-
 use models\Auth;
 use models\ProductModel;
 
-$auth = Auth::getAuthInstance();
-// $auth->checkAuthForUser();
+$auth = Auth::getAuthInstance();;
 
 $productModel = new ProductModel();
 $products = [];
@@ -109,15 +107,6 @@ if (!isset($_GET["category_id"])) {
                     </div>
                 </div>
 
-                <!-- <div class="p-2 border-bottom">
-                    <h5>Price Range</h5>
-                    <div class="d-flex align-items-center ">
-                        <input type="number" placeholder="min" class=" form-control p-1 me-1" name="" id="">-
-                        <input type="number" placeholder="max" class=" form-control p-1 ms-1" name="" id="">
-                    </div>
-                    <input class=" form-control p-1 mt-1 bg-dark text-white" type="button" value="Set Price">
-
-                </div> -->
             </div>
             <div class="col-lg-9     pt-2  ">
                 <h5>Products</h5>
@@ -139,18 +128,11 @@ if (!isset($_GET["category_id"])) {
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
                                         <i style="color: gainsboro;" class="fas fa-star "></i></span>
-                                    <!-- <a href="http://localhost/e-commerce/views/productDetail.php?id=<?php echo $product["id"] ?>" id="addtocart" class="btn btn-warning">View Detail</a> -->
-                                    <!-- <a href="http://localhost/e-commerce/views/productDetail.php?id=<?php echo $product["id"] ?>" id="addtocart" class="btn btn-warning">View Detail</a> -->
-
                                 </div>
 
                             </div>
                         </a>
                     <?php } ?>
-
-
-
-
                 </div>
             </div>
 
@@ -160,48 +142,6 @@ if (!isset($_GET["category_id"])) {
 
     <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 
-
-
 </body>
 
 </html>
-
-<!-- 
-    <script>
-        let filter = document.querySelectorAll("#filter");
-        console.log(filter);
-
-        // localStorage.setItem("filterCheckedList", "[]");
-        let checkedList = JSON.parse(localStorage.getItem("filterCheckedList"));
-
-
-        for (i = 0; i < checkedList.length; i++) {
-            if (checkedList[i].checked === true) {
-                filter[i].checked = true;
-            }
-        }
-
-        filter.forEach(e => e.addEventListener("change", () => {
-
-            addToCheckedList({
-                id: e.value,
-                checked: e.checked
-            });
-
-            location.href = "http://localhost/e-commerce/views/shop.php?category_id=1";
-
-        }));
-
-        function addToCheckedList(element) {
-            let newArray = [...checkedList];
-
-            let elementExist = newArray.findIndex(obj => obj.id === element.id);
-
-            if (elementExist === -1) {
-                newArray = [...newArray, element];
-            } else {
-                newArray[elementExist] = element;
-            }
-            localStorage.setItem("filterCheckedList", JSON.stringify(newArray));
-        }
-    </script> -->
